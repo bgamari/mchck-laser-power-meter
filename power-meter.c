@@ -62,10 +62,11 @@ new_data(uint8_t *data, size_t len)
 
         if (!active && start) {
                 active += 4;
+                enum adc_mode mode = ADC_MODE_POWER_NORMAL | ADC_MODE_SAMPLE_LONG | ADC_MODE_AVG_32;
                 adc_queue_sample(&core_temp, ADC_TEMP, 0, core_temp_done, NULL);
-                adc_queue_sample(&ext_temp, ADC_PTB2, 0, ext_temp_done, NULL);
-                adc_queue_sample(&power1, ADC_PTB0, 0, power1_done, NULL);
-                adc_queue_sample(&power2, ADC_PTB1, 0, power2_done, NULL);
+                adc_queue_sample(&ext_temp, ADC_PTB2, mode, ext_temp_done, NULL);
+                adc_queue_sample(&power1, ADC_PTB0, mode, power1_done, NULL);
+                adc_queue_sample(&power2, ADC_PTB1, mode, power2_done, NULL);
         }
 
         cdc_read_more(&cdc);
