@@ -1,6 +1,6 @@
 #include <mchck.h>
 
-#include "read-temp.desc.h"
+#include "power-meter.desc.h"
 
 int active = 0;
 
